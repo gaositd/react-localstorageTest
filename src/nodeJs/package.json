@@ -1,0 +1,17 @@
+{
+  "name": "prueba1",
+  "version": "1.0.0",
+  "description": "curso de linkedin sobre node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "auditar": "npm audit && node app.js"
+  },
+  "author": "Alvaro Gamez Chavez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-generator": "^4.16.1",
+    "moment": "^2.29.3"
+  }
+}

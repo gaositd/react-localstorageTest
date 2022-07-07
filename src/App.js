@@ -3,42 +3,27 @@ import "./App.css";
 import { TaskCreator } from "./components/taskCreator";
 
 function App() {
-  const [taskItem, setTaskItem] = useState([
-    // {
-    //   name: "Tarea 1",
-    //   done: false,
-    // },
-    // {
-    //   name: "Tarea 2",
-    //   done: false,
-    // },
-    // {
-    //   name: "Tarea 3",
-    //   done: false,
-    // },
-  ]);
+  const [taskItem, setTaskItem] = useState([]);
 
   function createNewTask(taskName) {
-    // alert(taskName);
     const encontrado = taskItem.find(item => item.name === taskName);
 
     if(encontrado){
       alert("dato insertado anteriormente");
     }else {
       setTaskItem([...taskItem, { name: taskName, done: false }]);
-      localStorage.setItem('task', JSON.stringify(taskItem));
     }
   };
 
   useEffect(()=>{
     let data = localStorage.getItem('task');
     if(data){
-      console.log(JSON.parse(data));
+      console.log(`data ==>> ${JSON.parse(data)}`);
     }
   },[]);
 
   useEffect(()=>{
-    console.log("cambio")
+    localStorage.setItem('task', JSON.stringify(taskItem));
   },[taskItem]);
 
   return (
