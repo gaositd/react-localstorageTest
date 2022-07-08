@@ -3,25 +3,11 @@ import { TaskCreator } from "./components/taskCreator";
 import "./App.css";
 
 function App() {
-  const [taskItems, setTaskItems] = useState([
-    // {
-    //   name: "Tarea 1",
-    //   done: false,
-    // },
-    // {
-    //   name: "Tarea 2",
-    //   done: false,
-    // },
-    // {
-    //   name: "Tarea 3",
-    //   done: false,
-    // },
-  ]);
+
+  const [taskItems, setTaskItems] = useState([]);
 
   function createNewTask(taskName) {
-    // alert(taskName);
-    const encontrado = taskItems.find((taskItem) => taskItem.name === taskName);
-    if(encontrado) {
+    if(taskItems.find((taskItem) => taskItem.name === taskName)) {
       alert("Tarea añadida anteriormente");
     }else {
       setTaskItems([...taskItems, { name: taskName, done: false }]);
@@ -31,13 +17,11 @@ function App() {
   useEffect(() => {
     let data = localStorage.getItem("tasks");
     if(data){
-      // console.log(JSON.parse(data));
       setTaskItems(JSON.parse(data));
     }
   },[ ]);
 
   useEffect(() =>{
-    // console.log("Cambiando");
     localStorage.setItem('tasks',JSON.stringify(taskItems));
   },[taskItems]);
 
