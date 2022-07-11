@@ -1,13 +1,17 @@
 import React, { Fragment } from "react";
-import { TaskRow } from './taskRow'
+import { TaskRow } from "./taskRow";
 
-export const Tasktable = (props) =>{
-  const { tasks, toggleTask } = props;
+export const Tasktable = (props) => {
+  const { tasks, toggleTask, showCompleted = false } = props;
 
-  const handleChange = (e)=>{
-    console.log(e.target)
-  }
-  
+  const tasksTableRows = (doneValue) => {
+    return tasks
+            .filter(task => task.done === doneValue)
+            .map((item) => (
+      <TaskRow key={item.name} item={item} toggleTask={toggleTask} />
+    ));
+  };
+
   return (
     <Fragment>
       <table align="center" border="3">
@@ -21,12 +25,8 @@ export const Tasktable = (props) =>{
             </td>
           </tr>
         </thead>
-        <tbody>
-          {tasks.map((item) => (
-            <TaskRow key={item.name} item={item} toggleTask={toggleTask} />
-          ))}
-        </tbody>
+        <tbody>{tasksTableRows(showCompleted)}</tbody>
       </table>
     </Fragment>
   );
-}
+};
