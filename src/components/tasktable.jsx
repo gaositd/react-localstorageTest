@@ -14,9 +14,9 @@ export const Tasktable = (props) => {
 
   return (
     <Fragment>
-      <table align="center" border="3">
+      <table className="table table-dark table-striped border-secondary">
         <thead>
-          <tr>
+          <tr className="table-primary">
             <td>
               <h3>&nbsp;Task Name&nbsp;</h3>
             </td>
